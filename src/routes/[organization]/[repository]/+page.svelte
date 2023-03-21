@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import moment from 'moment-timezone';
 	export let data;
 </script>

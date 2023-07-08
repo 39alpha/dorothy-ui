@@ -8,6 +8,9 @@
     <h1>
       <a href="/">Dorothy</a>
     </h1>
+    <h2>
+      End-to-end dataset management
+    </h2>
   </div>
   <Navigation />
 </header>
@@ -29,6 +32,11 @@ header {
   text-align: center;
   position: relative;
   margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
+
+  h2 {
+    color: $grey-color-50;
+  }
 }
 
 main {

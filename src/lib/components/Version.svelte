@@ -4,28 +4,28 @@
 	interface ParseMessage {
 		description: string;
 		body?: string;
-	};
+	}
 
-  export let message: string;
-  export let author: string;
-  export let date: string;
-  export let hash: string; 
+	export let message: string;
+	export let author: string;
+	export let date: string;
+	export let hash: string;
 	export let path_type: int;
 	export let parents: Array<string>;
 
-	$: type = path_type == 0 ? "dir": "file";
+	$: type = path_type == 0 ? 'dir' : 'file';
 	$: parsed_message = parseMessage(message);
 
 	function parseMessage(message: string): Message {
-		const lines = message.split('\n\n').filter(x => x.length !== 0);
+		const lines = message.split('\n\n').filter((x) => x.length !== 0);
 		if (lines.length === 0) {
 			return {
-				description: "<empty description>",
+				description: '<empty description>'
 			};
 		}
 		return {
 			description: lines[0],
-			body: lines.slice(1),
+			body: lines.slice(1)
 		};
 	}
 
@@ -38,10 +38,9 @@
 		while (text[n] != ' ') {
 			n -= 1;
 		}
-		n - 1
+		n - 1;
 		return text.slice(0, n) + '...';
 	}
-
 </script>
 
 <li class="version version--{type}">
@@ -51,12 +50,12 @@
 				{truncate(parsed_message.description, 74)}
 			</span>
 		</div>
-		{#if parsed_message.body && parsed_message.body.length != 0 }
-		<div class="version_row version_row--body">
-			{#each parsed_message.body as paragraph}
-				<p>{paragraph}</p>
-			{/each}
-		</div>
+		{#if parsed_message.body && parsed_message.body.length != 0}
+			<div class="version_row version_row--body">
+				{#each parsed_message.body as paragraph}
+					<p>{paragraph}</p>
+				{/each}
+			</div>
 		{/if}
 		<div class="version_row">
 			<span class="version_author">{author}</span>
@@ -73,67 +72,68 @@
 </li>
 
 <style lang="scss">
-@use "$lib/styles/variables" as *;
+	@use '$lib/styles/variables' as *;
 
-li {
-	list-style-type: none;
-	padding: 0.4em 1em;
-	margin: 0.2em 0em;
-	border: 1px solid #444444;
-}
-
-.version {
-	&--dir {
-		background: $grey-color-10;
+	li {
+		list-style-type: none;
+		padding: 0.4em 1em;
+		margin: 0.2em 0em;
+		border: 1px solid #444444;
 	}
 
-	&--file {
-		background: $grey-color-30;
-	}
-
-	&_body {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		width: 100%;
-		padding: 0px;
-		margin: 0px;
-	}
-
-  &_row {
-  	display: flex;
-  	flex-direction: row;
-  	justify-content: space-between;
-		padding: 0px;
-		margin: 0px;
-		line-height: calc($base-line-height / 1.2);
-		max-width: $narrow-content-width;
-
-		p {
-			font-size: 14px;
+	.version {
+		&--dir {
+			background: $grey-color-10;
 		}
 
-		&--body {
-			margin: 5px 0;
+		&--file {
+			background: $grey-color-30;
 		}
-  }
 
-  &_message {
-  	font-weight: bold;
-  	font-size: 16px;
-		line-height: $base-line-height;
-  }
+		&_body {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			width: 100%;
+			padding: 0px;
+			margin: 0px;
+		}
 
-  &_date {
-  	font-size: 12px;
-  }
+		&_row {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			padding: 0px;
+			margin: 0px;
+			line-height: calc($base-line-height / 1.2);
+			max-width: $narrow-content-width;
 
-  &_author, &_hash {
-  	font-size: 12px;
-  }
+			p {
+				font-size: 14px;
+			}
 
-  &_author {
-  	font-weight: bold;
-  }
-}
+			&--body {
+				margin: 5px 0;
+			}
+		}
+
+		&_message {
+			font-weight: bold;
+			font-size: 16px;
+			line-height: $base-line-height;
+		}
+
+		&_date {
+			font-size: 12px;
+		}
+
+		&_author,
+		&_hash {
+			font-size: 12px;
+		}
+
+		&_author {
+			font-weight: bold;
+		}
+	}
 </style>

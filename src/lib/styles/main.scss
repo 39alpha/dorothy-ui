@@ -71,6 +71,24 @@ main {
     }
 }
 
+button, input, textarea {
+    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: calc($spacing-unit / 4) calc($spacing-unit / 2);
+}
+
+label {
+    display: inline-block;
+    font-weight: bold;
+}
+
+button {
+    color: $brand-color;
+    background: $grey-color-10;
+    font-weight: bold;
+}
+
 .sidebar {
     flex: 1 0 25%;
     max-width: 25%;

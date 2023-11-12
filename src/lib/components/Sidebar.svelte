@@ -39,7 +39,7 @@
                         <span class="icon">
                             <i class="fa fa-square-plus"></i>
                         </span>
-                        <a href="/create">Create Organization</a>
+                        <a href="/organization/create">Create Organization</a>
                     </li>
                 </ul>
             </details-menu>

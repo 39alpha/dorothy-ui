@@ -1,4 +1,4 @@
-/** @type {import("./$types").PageLoad} */
+/** @type {import("./$types").LayoutLoad} */
 interface Entity {
     name: string;
     path: string;

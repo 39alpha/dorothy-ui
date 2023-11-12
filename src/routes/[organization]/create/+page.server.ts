@@ -14,7 +14,7 @@ export const actions = {
         const {
             data: { path }
         } = await axios.put(
-            `http://localhost:4248/v0/organization/${params.organization}/repository`,
+            `http://localhost:4248/v0/organization/${params.organization}/dataset`,
             data
         );
         throw redirect(303, path);

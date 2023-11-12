@@ -18,7 +18,7 @@ export async function load({ fetch }) {
         organizations = await res.json();
         await Promise.all(organizations.map(async (organization: Organization): Promise<void> => {
             const res = await fetch(
-                `http://localhost:4248/v0/organization${organization.path}/repository`
+                `http://localhost:4248/v0/organization${organization.path}/dataset`
             );
             organization.datasets = await res.json();
         }));

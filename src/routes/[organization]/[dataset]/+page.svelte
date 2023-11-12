@@ -7,10 +7,10 @@
     let organization;
 </script>
 
-<Sidebar organizations={data.organizations} bind:organization={organization} dataset={data.repository} />
+<Sidebar organizations={data.organizations} bind:organization={organization} dataset={data.dataset} />
 
 <div class="body">
-    <h1>{data.organization}/{data.repository}</h1>
+    <h1>{data.organization}/{data.dataset}</h1>
     {#if data.manifest && data.manifest.length > 0}
         <ul class="manifest">
             {#each [...data.manifest].reverse() as version}

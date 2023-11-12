@@ -38,7 +38,7 @@
             <label for="description">Description</label>
             <input name="description" type="text" />
         </div>
-        <button type="submit">Create Repository</button>
+        <button type="submit">Create Dataset</button>
     </form>
 </div>
 

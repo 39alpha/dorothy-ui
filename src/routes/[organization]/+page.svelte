@@ -21,7 +21,7 @@
         <li>
             <a href="/{data.organization}/create">New Dataset</a>
         </li>
-        {#each data.repositories as { name, path }}
+        {#each data.datasets as { name, path }}
             <li><a href={path}>{name}</a></li>
         {/each}
     </ul>

@@ -1,9 +1,9 @@
 /** @type {import("./$types").PageLoad} */
 export async function load({ fetch, params }) {
     const res = await fetch(
-        `http://localhost:4248/v0/organization/${params.organization}/repository`
+        `http://localhost:4248/v0/organization/${params.organization}/dataset`
     );
-    const repositories = await res.json();
+    const datasets = await res.json();
 
-    return { ...params, repositories };
+    return { ...params, datasets };
 }

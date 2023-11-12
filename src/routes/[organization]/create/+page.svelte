@@ -4,7 +4,7 @@
     export let data;
 </script>
 
-<ListHeader href="/{data.organization}">
+<ListHeader href="/">
     Create a New Dataset for {data.organization}
 </ListHeader>
 

@@ -5,9 +5,7 @@
     export let data;
 </script>
 
-<ListHeader href="/{data.organization}">
-    {data.organization}/{data.repository}
-</ListHeader>
+<ListHeader href="/">{data.organization}/{data.repository}</ListHeader>
 
 <div class="description">
     <h1>Walkthrough:</h1>

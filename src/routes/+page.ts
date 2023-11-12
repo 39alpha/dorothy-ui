@@ -1,7 +1,38 @@
 /** @type {import("./$types").PageLoad} */
+interface Entity {
+    name: string;
+    path: string;
+}
+
+interface Repository extends Entity {
+}
+
+interface Organization extends Entity {
+    repositories: Array<Repository>
+}
+
 export async function load({ fetch }) {
-    const res = await fetch(`http://localhost:4248/v0/organization`);
-    const organizations = await res.json();
+    let organizations: Array<Organization> = [];
+    try {
+        const res = await fetch(`http://localhost:4248/v0/organization`);
+        organizations = await res.json();
+        await Promise.all(organizations.map(async (organization: Organization): Promise<void> => {
+            const res = await fetch(
+                `http://localhost:4248/v0/organization${organization.path}/repository`
+            );
+            organization.repositories = await res.json();
+        }));
+
+        organizations.sort((a: Organization, b: Organization): number => {
+            if (a.name < b.name) {
+                return -1;
+            } else if (a.name > b.name) {
+                return 1;
+            }
+            return 0;
+        });
+
+    } catch (err) { }
 
     return { organizations };
 }

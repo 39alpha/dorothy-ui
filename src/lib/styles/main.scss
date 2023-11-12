@@ -59,3 +59,28 @@ h2,
 h3 {
     text-align: center;
 }
+
+.button {
+    background: $grey-color-10;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: calc($spacing-unit / 4) calc($spacing-unit / 2);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.icon {
+    color: $text-color;
+    // margin-right: calc($spacing-unit / 2);
+    display: inline-block;
+    width: $spacing-unit;
+
+    &.disabled {
+        i {
+            display: none;
+        }
+    }
+}

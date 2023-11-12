@@ -17,45 +17,45 @@ dd,
 ol,
 ul,
 figure {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-	color: $text-color;
-	background-color: $background-color;
-	-webkit-text-size-adjust: 100%;
-	-webkit-font-feature-settings: 'kern' 1;
-	-moz-font-feature-settings: 'kern' 1;
-	-o-font-feature-settings: 'kern' 1;
-	font-feature-settings: 'kern' 1;
-	font-kerning: normal;
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
+    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+    color: $text-color;
+    background-color: $background-color;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-feature-settings: 'kern' 1;
+    -moz-font-feature-settings: 'kern' 1;
+    -o-font-feature-settings: 'kern' 1;
+    font-feature-settings: 'kern' 1;
+    font-kerning: normal;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 a {
-	color: $brand-color;
-	text-decoration: none;
+    color: $brand-color;
+    text-decoration: none;
 
-	&:hover {
-		color: $brand-color;
-		text-decoration: underline;
-	}
+    &:hover {
+        color: $brand-color;
+        text-decoration: underline;
+    }
 
-	.social-media-list &:hover {
-		text-decoration: none;
+    .social-media-list &:hover {
+        text-decoration: none;
 
-		.username {
-			text-decoration: underline;
-		}
-	}
+        .username {
+            text-decoration: underline;
+        }
+    }
 }
 
 h1,
 h2,
 h3 {
-	text-align: center;
+    text-align: center;
 }

@@ -106,11 +106,7 @@
             padding: 0px;
             margin: 0px;
             line-height: calc($base-line-height / 1.2);
-            max-width: $narrow-content-width;
-
-            p {
-                font-size: 14px;
-            }
+            max-width: $content-width;
 
             &--body {
                 margin: 5px 0;
@@ -119,17 +115,18 @@
 
         &_message {
             font-weight: bold;
-            font-size: 16px;
             line-height: $base-line-height;
         }
 
         &_date {
-            font-size: 12px;
+            @include relative-font-size(0.75);
+            // font-size: 12px;
         }
 
         &_author,
         &_hash {
-            font-size: 12px;
+            @include relative-font-size(0.75);
+            // font-size: 12px;
         }
 
         &_author {

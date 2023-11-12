@@ -1,6 +1,8 @@
 <script lang="ts">
     import '$lib/styles/main.scss';
     import Navigation from '$lib/components/Navigation.svelte';
+    import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
 </script>
 
 <header>
@@ -16,29 +18,3 @@
     </div>
 </main>
 <footer />
-
-<style lang="scss">
-    @import '$lib/styles/variables', '$lib/styles/mixins';
-
-    header {
-        min-height: $spacing-unit * 1.865;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        position: relative;
-        margin-top: $spacing-unit;
-        margin-bottom: $spacing-unit;
-
-        h2 {
-            color: $grey-color-50;
-        }
-    }
-
-    main {
-        display: block;
-    }
-
-    main div {
-        @include wrapper($narrow-content-width);
-    }
-</style>

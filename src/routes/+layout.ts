@@ -4,11 +4,11 @@ interface Entity {
     path: string;
 }
 
-interface Repository extends Entity {
+interface Dataset extends Entity {
 }
 
 interface Organization extends Entity {
-    repositories: Array<Repository>
+    datasets: Array<Dataset>
 }
 
 export async function load({ fetch }) {
@@ -20,7 +20,7 @@ export async function load({ fetch }) {
             const res = await fetch(
                 `http://localhost:4248/v0/organization${organization.path}/repository`
             );
-            organization.repositories = await res.json();
+            organization.datasets = await res.json();
         }));
 
         organizations.sort((a: Organization, b: Organization): number => {

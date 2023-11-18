@@ -1,9 +1,10 @@
 <script lang="ts">
     export let organizations;
     export let organization;
-    export let dataset = undefined;
+    export let dataset;
 
-    $: organization = organizations ? organizations[0] : undefined;
+    $: organization = organization ?? organizations?.[0];
+
     $: view = false;
 
     let select_organization = function (index: number): void {
@@ -27,7 +28,7 @@
                     <li><strong>Organizations</strong></li>
                     {#each organizations ?? [] as { name, path }, i}
                         <li>
-                            <span class="icon" class:disabled={organization.path !== path}>
+                            <span class="icon" class:disabled={organization?.path !== path}>
                                 <i class="fa fa-check" />
                             </span>
                             <a href={'javascript:void(0)'} on:click={() => select_organization(i)}>

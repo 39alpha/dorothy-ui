@@ -15,14 +15,6 @@ export async function load({ fetch }) {
     try {
         const res = await fetch(`http://localhost:4248/v0/organization`);
         organizations = await res.json();
-        await Promise.all(
-            organizations.map(async (organization: Organization): Promise<void> => {
-                const res = await fetch(
-                    `http://localhost:4248/v0/organization${organization.path}/dataset`
-                );
-                organization.datasets = await res.json();
-            })
-        );
 
         organizations.sort((a: Organization, b: Organization): number => {
             if (a.name < b.name) {

@@ -1,4 +1,7 @@
 <script lang="ts">
+    import Loading from '$lib/components/Loading.svelte';
+    import { onMount } from 'svelte';
+
     export let organizations;
     export let organization;
     export let dataset;
@@ -7,8 +10,19 @@
 
     $: view = false;
 
-    let select_organization = function (index: number): void {
-        organization = organizations[index];
+    let update_datasets = async function (organization) {
+        if (!organization.datasets) {
+            organization.datasets = await fetch(
+                `http://localhost:4248/v0/organization${organization.path}/dataset`
+            ).then(res => res.json());
+        }
+        return organization;
+    };
+
+    onMount(() => update_datasets(organization).then(org => organization = org));
+
+    let select_organization = async function (index: number): void {
+        organization = await update_datasets(organizations[index]);
         view = false;
     };
 </script>
@@ -54,18 +68,22 @@
         </a>
     </div>
 
-    {#if organization?.datasets?.length}
-        <ul>
-            {#each organization.datasets as { name, path }, i}
-                <li>
-                    <span class="icon" class:disabled={dataset?.name !== name}>
-                        <i class="fa fa-check" />
-                    </span>
-                    <a href={path}>{organization.name}/{name}</a>
-                </li>
-            {/each}
-        </ul>
+    {#if !organization.datasets }
+        <Loading />
     {:else}
-        <p>Organization has no datasets yet.</p>
+        {#if organization?.datasets?.length }
+            <ul>
+                {#each organization.datasets as { name, path }, i}
+                    <li>
+                        <span class="icon" class:disabled={dataset?.name !== name}>
+                            <i class="fa fa-check" />
+                        </span>
+                        <a href={path}>{organization.name}/{name}</a>
+                    </li>
+                {/each}
+            </ul>
+        {:else}
+            <p>Organization has no datasets yet.</p>
+        {/if}
     {/if}
 </div>

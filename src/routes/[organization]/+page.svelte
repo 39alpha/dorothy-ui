@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { getContext } from 'svelte';
     import Sidebar from '$lib/components/Sidebar.svelte';
 
     export let data;
@@ -12,7 +13,7 @@
     <h1>{data?.organization?.name} Datasets</h1>
     <div class="body_content">
     {#if data?.organization?.datasets?.length}
-        {#each data.organization.datasets as { name, path }, i}
+        {#each data?.organization.datasets as { name, path }, i}
             <div class="dataset">
                 <img class="dataset_avatar" src="{data?.organization?.avatar ?? avatar}" alt="{name} avatar" />
                 <div class="dataset_details">

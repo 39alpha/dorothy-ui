@@ -3,17 +3,16 @@
     import Version from '$lib/components/Version.svelte';
 
     export let data;
-
-    let organization;
 </script>
 
-<Sidebar organizations={data.organizations} bind:organization dataset={data.dataset} />
+<Sidebar organizations={data.organizations} organization={data.organization} dataset={data.dataset} />
 
 <div class="body">
-    <h1>{data.organization}/{data.dataset}</h1>
-    {#if data.manifest && data.manifest.length > 0}
+    <h1><a href="{data.organization.path}">{data.organization.name}</a>/{data.dataset.name}</h1>
+
+    {#if data?.dataset?.manifest?.length }
         <ul class="manifest">
-            {#each [...data.manifest].reverse() as version}
+            {#each [...data.dataset.manifest].reverse() as version}
                 <Version {...version} />
             {/each}
         </ul>

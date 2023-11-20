@@ -58,7 +58,7 @@
         <ul>
             {#each organization.datasets as { name, path }, i}
                 <li>
-                    <span class="icon" class:disabled={dataset !== name}>
+                    <span class="icon" class:disabled={dataset?.name !== name}>
                         <i class="fa fa-check" />
                     </span>
                     <a href={path}>{organization.name}/{name}</a>

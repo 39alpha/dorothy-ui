@@ -11,10 +11,11 @@
     export let date: string;
     export let hash: string;
     export let path_type: number;
-    // export let parents: Array<string>;
+    export let parents: Array<string>;
 
     $: type = path_type == 0 ? 'dir' : 'file';
     $: parsed_message = parseMessage(message);
+    $: data_parents = parents.join(';');
 
     function parseMessage(message: string): ParseMessage {
         const lines = message.split('\n\n').filter((x) => x.length !== 0);
@@ -43,7 +44,7 @@
     }
 </script>
 
-<li class="version version--{type}">
+<li class="version version--{type}" data-hash="{hash}" data-parents="{data_parents}">
     <div class="version_body">
         <div class="version_row">
             <span class="version_message">

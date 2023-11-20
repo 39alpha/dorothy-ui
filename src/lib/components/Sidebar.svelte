@@ -46,7 +46,7 @@
             </details-menu>
         </details>
 
-        <a class="button" href="/create">
+        <a class="button" href="{`${organization?.path}/dataset/create`}" disabled={!organization}>
             <span class="icon">
                 <i class="fa fa-square-plus" />
             </span>

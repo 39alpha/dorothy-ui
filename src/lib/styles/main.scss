@@ -76,7 +76,7 @@ header {
 main {
     display: block;
 
-    & > div {
+    &>div {
         display: flex;
         @include wrapper($content-width);
     }
@@ -106,6 +106,10 @@ button {
     color: $brand-color;
     background: $grey-color-10;
     font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .sidebar {
@@ -131,7 +135,7 @@ button {
             -ms-user-select: none;
             user-select: none;
 
-            :hover {
+            &:hover {
                 cursor: pointer;
             }
 
@@ -146,10 +150,12 @@ button {
                 border: 1px solid $grey-color-80;
                 border-radius: 10px;
                 box-shadow: 0 0 10px $grey-color-50;
+
                 ul {
                     li {
                         padding: calc($spacing-unit / 4) calc($spacing-unit / 2);
                     }
+
                     li:not(:last-child) {
                         border-bottom: 1px solid $grey-color-40;
                     }

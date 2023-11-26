@@ -7,12 +7,17 @@
 <Sidebar organizations={data.organizations} organization={data.organization}/>
 
 <div class="body">
-    <h1>Create a Dataset for <a href="{data.organization.path}">{data.organization.name}</a></h1>
+    <h1>Create a Dataset for <a href="/{data.organization.id}">{data.organization.name}</a></h1>
 
     <form method="POST">
         <div>
             <label for="name">Name</label>
             <input name="name" type="text" />
+        </div>
+
+        <div>
+            <label for="email">Contact Email</label>
+            <input name="email" type="email" />
         </div>
 
         <div>

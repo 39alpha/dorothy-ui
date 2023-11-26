@@ -8,11 +8,11 @@
 <Sidebar organizations={data.organizations} organization={data.organization} dataset={data.dataset} />
 
 <div class="body">
-    <h1><a href="{data.organization.path}">{data.organization.name}</a>/{data.dataset.name}</h1>
+    <h1><a href="/{data.organization.id}">{data.organization.name}</a>/{data.dataset.name}</h1>
 
-    {#if data?.dataset?.manifest?.length }
+    {#if data?.dataset?.manifest?.versions?.length }
         <ul class="manifest">
-            {#each [...data.dataset.manifest].reverse() as version}
+            {#each [...data.dataset.manifest.versions].reverse() as version}
                 <Version {...version} />
             {/each}
         </ul>

@@ -10,19 +10,8 @@
 
     $: view = false;
 
-    let update_datasets = async function (organization) {
-        if (!organization.datasets) {
-            organization.datasets = await fetch(
-                `http://localhost:4248/v0/organization${organization.path}/dataset`
-            ).then(res => res.json());
-        }
-        return organization;
-    };
-
-    onMount(() => update_datasets(organization).then(org => organization = org));
-
-    let select_organization = async function (index: number): void {
-        organization = await update_datasets(organizations[index]);
+    let select_organization = function (index: number): void {
+        organization = organizations[index];
         view = false;
     };
 </script>
@@ -40,9 +29,9 @@
             <details-menu>
                 <ul>
                     <li><strong>Organizations</strong></li>
-                    {#each organizations ?? [] as { name, path }, i}
+                    {#each organizations ?? [] as { id, name }, i}
                         <li>
-                            <span class="icon" class:disabled={organization?.path !== path}>
+                            <span class="icon" class:disabled={organization?.id !== id}>
                                 <i class="fa fa-check" />
                             </span>
                             <a href={'javascript:void(0)'} on:click={() => select_organization(i)}>
@@ -60,7 +49,7 @@
             </details-menu>
         </details>
 
-        <a class="button" href="{`${organization?.path}/dataset/create`}" disabled={!organization}>
+        <a class="button" href="/{organization?.id}/dataset/create" disabled={!organization}>
             <span class="icon">
                 <i class="fa fa-square-plus" />
             </span>
@@ -73,12 +62,12 @@
     {:else}
         {#if organization?.datasets?.length }
             <ul>
-                {#each organization.datasets as { name, path }, i}
+                {#each organization.datasets as { id, name }, i}
                     <li>
-                        <span class="icon" class:disabled={dataset?.name !== name}>
+                        <span class="icon" class:disabled={dataset?.id !== id}>
                             <i class="fa fa-check" />
                         </span>
-                        <a href={path}>{organization.name}/{name}</a>
+                        <a href="/{organization.id}/{id}">{name}</a>
                     </li>
                 {/each}
             </ul>

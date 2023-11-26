@@ -10,10 +10,10 @@
     export let author: string;
     export let date: string;
     export let hash: string;
-    export let path_type: number;
+    export let pathType: string;
     export let parents: Array<string>;
 
-    $: type = path_type == 0 ? 'dir' : 'file';
+    $: type = pathType.toLowerCase();
     $: parsed_message = parseMessage(message);
     $: data_parents = parents.join(';');
 
@@ -83,7 +83,7 @@
     }
 
     .version {
-        &--dir {
+        &--directory {
             background: $grey-color-10;
         }
 

@@ -10,25 +10,28 @@
 <Sidebar organizations={data.organizations} organization={data?.organization} />
 
 <div class="body">
-    <h1>{data?.organization?.name} Datasets</h1>
+    <h1>{data?.organization?.name}'s Datasets</h1>
     <div class="body_content">
-    {#if data?.organization?.datasets?.length}
-        {#each data?.organization.datasets as { name, path }, i}
-            <div class="dataset">
-                <img class="dataset_avatar" src="{data?.organization?.avatar ?? avatar}" alt="{name} avatar" />
-                <div class="dataset_details">
-                    <div class="dataset_header">
-                        <a href={path}>{data?.organization?.name}/{name}</a>
-                    </div>
-                    <div class="dataset_description">
-                        <p>{data?.organization?.description ?? 'A glorious dataset as yet undescribed'}</p>
+        {#if data?.organization?.description}
+            <p>{data?.organization?.description}<p>
+        {/if}
+        {#if data?.organization?.datasets?.length}
+            {#each data?.organization.datasets as { id, name }, i}
+                <div class="dataset">
+                    <img class="dataset_avatar" src="{data?.organization?.avatar ?? avatar}" alt="{name} avatar" />
+                    <div class="dataset_details">
+                        <div class="dataset_header">
+                            <a href="/{data?.organization?.id}/{id}">{data?.organization?.id}/{id}</a>
+                        </div>
+                        <div class="dataset_description">
+                            <p>{data?.organization?.description ?? 'A glorious dataset as yet undescribed'}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {/each}
-    {:else}
-        <p>Organization has no datasets yet.</p>
-    {/if}
+            {/each}
+        {:else}
+            <p>Organization has no datasets yet.</p>
+        {/if}
     </div>
 </div>
 

@@ -1,19 +1,41 @@
+import { Chain } from '$lib/zeus';
+
 /** @type {import("./$types").PageLoad} */
-export async function load({ fetch, params }) {
+export async function load({ params }) {
     try {
-        let res = await fetch(
-            `http://localhost:4248/v0/organization/${params.organization}/dataset/${params.dataset}`
-        );
-        const dataset = await res.json();
+        const chain = Chain('http://localhost:4248/query');
 
-        res = await fetch(
-            `http://localhost:4248/v0/organization/${params.organization}/dataset/${params.dataset}/manifest`
-        );
-        dataset.manifest = await res.json();
+        const dataset = await chain('query')({
+            dataset: [
+                {
+                    input: {
+                        id: (params.dataset as string),
+                        organizationId: (params.organization as string),
+                    },
+                },
+                {
+                    id: true,
+                    name: true,
+                    organization: {
+                        id: true,
+                        name: true,
+                    },
+                    manifest: {
+                        versions: {
+                            author: true,
+                            date: true,
+                            message: true,
+                            hash: true,
+                            pathType: true,
+                            parents: true,
+                        },
+                    },
+                },
+            ]
+        })
 
-        return { dataset };
+        return dataset;
     } catch (err) {
-        console.error(err);
         return {};
     }
 }

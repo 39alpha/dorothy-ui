@@ -11,7 +11,8 @@
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "test:unit": "vitest",
         "lint": "prettier --plugin-search-dir . --check . && eslint .",
-        "format": "prettier --plugin-search-dir . --write ."
+        "format": "prettier --plugin-search-dir . --write .",
+        "prepare": "npx zeus http://localhost:4248/query src/lib"
     },
     "devDependencies": {
         "@playwright/test": "^1.28.1",
@@ -22,6 +23,7 @@
         "eslint": "^8.28.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-svelte3": "^4.0.0",
+        "graphql-zeus": "^5.3.2",
         "prettier": "^2.8.0",
         "prettier-plugin-svelte": "^2.8.1",
         "sass": "^1.59.3",
@@ -36,7 +38,6 @@
     },
     "type": "module",
     "dependencies": {
-        "axios": "^1.3.4",
         "moment-timezone": "^0.5.41"
     }
 }

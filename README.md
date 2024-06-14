@@ -1,3 +1,5 @@
+**This project was replaced by a built-in server UI in [`dorothy`](https://github.com/39alpha/dorothy) and is no longer maintained.**
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
